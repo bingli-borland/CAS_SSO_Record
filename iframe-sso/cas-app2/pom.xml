@@ -5,7 +5,7 @@
     <groupId>app2.com</groupId>
     <artifactId>cas-app2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
     <name>cas-app2</name>
     <url>http://maven.apache.org</url>

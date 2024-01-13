@@ -23,16 +23,16 @@ function help() {
 }
 
 function clean() {
-	./mvnw clean "$@"
+	mvn clean "$@"
 }
 
 function package() {
-	./mvnw clean package -T 5 "$@"
+	mvn clean package -T 5 "$@"
 	copy
 }
 
 function bootrun() {
-	./mvnw clean package spring-boot:run -T 5 "$@"
+	mvn clean package spring-boot:run -T 5 "$@"
 }
 
 function debug() {
@@ -66,7 +66,7 @@ function gencert() {
 
 function cli() {
 	
-	CAS_VERSION=$(./mvnw -q -Dexec.executable="echo" -Dexec.args='${cas.version}' --non-recursive org.codehaus.mojo:exec-maven-plugin:1.3.1:exec 2>/dev/null)
+	CAS_VERSION=$(mvn -q -Dexec.executable="echo" -Dexec.args='${cas.version}' --non-recursive org.codehaus.mojo:exec-maven-plugin:1.3.1:exec 2>/dev/null)
 	# echo "CAS version: $CAS_VERSION"
 	JAR_FILE_NAME="cas-server-support-shell-${CAS_VERSION}.jar"
 	# echo "JAR name: $JAR_FILE_NAME"
@@ -85,8 +85,8 @@ function cli() {
 	COMMAND_FILE="${DOWNLOAD_DIR}/${JAR_FILE_NAME}"
 	if [ ! -f "$COMMAND_FILE" ]; then
 		mkdir -p $DOWNLOAD_DIR
-		./mvnw org.apache.maven.plugins:maven-dependency-plugin:3.0.2:get -DgroupId=org.apereo.cas -DartifactId=cas-server-support-shell -Dversion=$CAS_VERSION -Dpackaging=jar -DartifactItem.outputDirectory=$DOWNLOAD_DIR -DremoteRepositories=central::default::http://repo1.maven.apache.org/maven2,snapshots::::https://oss.sonatype.org/content/repositories/snapshots -Dtransitive=false
-		./mvnw org.apache.maven.plugins:maven-dependency-plugin:3.0.2:copy -Dmdep.useBaseVersion=true -Dartifact=org.apereo.cas:cas-server-support-shell:$CAS_VERSION:jar -DoutputDirectory=$DOWNLOAD_DIR
+		mvn org.apache.maven.plugins:maven-dependency-plugin:3.0.2:get -DgroupId=org.apereo.cas -DartifactId=cas-server-support-shell -Dversion=$CAS_VERSION -Dpackaging=jar -DartifactItem.outputDirectory=$DOWNLOAD_DIR -DremoteRepositories=central::default::http://repo1.maven.apache.org/maven2,snapshots::::https://oss.sonatype.org/content/repositories/snapshots -Dtransitive=false
+		mvn org.apache.maven.plugins:maven-dependency-plugin:3.0.2:copy -Dmdep.useBaseVersion=true -Dartifact=org.apereo.cas:cas-server-support-shell:$CAS_VERSION:jar -DoutputDirectory=$DOWNLOAD_DIR
 	fi
 	java -jar $COMMAND_FILE "$@"
 	exit 0;
