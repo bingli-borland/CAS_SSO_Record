@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>登录界面</title>
+    <title>从app2获取数据界面</title>
 </head>
 
 <script src="assets/js/jquery.min.js"></script>
@@ -11,7 +11,7 @@
 
     $(document).ready(function () {
 
-        var cas_loginUrl = "https://cas.server.com:8443/cas/login";
+        var cas_loginUrl = "http://app2.com:8282/water/books.html";
         var service = GetQueryString("service");
 
         if (service == null) {
@@ -25,7 +25,7 @@
 </script>
 <body>
 
-<h2>Iframe方式嵌入Cas Server自定义登录页</h2>
+<h2>Iframe方式嵌入app2 books页</h2>
 <iframe id="myIframe" src="" width="1000px" style="height: 800px;">
 
 </iframe>

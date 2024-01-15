@@ -5,7 +5,7 @@
     <title>登录界面</title>
 </head>
 
-<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/common.js"></script>
 <script>
 
@@ -35,7 +35,7 @@
         console.info('来自子窗口:', e);
         setTimeout(function () {
             window.location.replace(decodeURIComponent(JSON.parse(e.data).target));// 必须decodeURIComponent页面才刷新，否则有问题
-        }, 1500)
+        }, 10000)
     }, false);
 </script>
 </body>

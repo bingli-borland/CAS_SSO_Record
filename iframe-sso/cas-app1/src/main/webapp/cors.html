@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>从app2获取数据界面</title>
+</head>
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/common.js"></script>
+<script>
+
+    $(document).ready(function () {
+
+        $.ajax({
+            url: "http://app2.com:8282/water/books.html",
+            type: "GET",
+            xhrFields: {
+                withCredentials: true
+            },
+            success: function(response) {
+                console.log(response);
+            }
+        });
+    });
+
+</script>
+<body>
+
+</body>
+</html>
